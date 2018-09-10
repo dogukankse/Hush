@@ -2,12 +2,12 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const env = require('./token');
+//const env = require('./token');
 const regex = new RegExp('(!spoil)( )(100|[1-9][1-9]?)$');
 
 let spoiler = [];
 
-client.login(env.token);
+client.login(process.env.BOT_TOKEN);
 
 client.on('ready', () => {
   console.log('Connected as ' + client.user.tag + ' to');
@@ -26,11 +26,25 @@ client.on('message', receivedMessage => {
     return;
   }
 
-  if (receivedMessage.content.startsWith('!infohush')) {
+  /*
+  comments
+    !takejsonfile
+    !cleanhush
+    !spoiler
+    !spoil #id
+  */
+
+  /*if (receivedMessage.content.startsWith('!infohush')) {
     receivedMessage.channel.send('!spoiler\n!spoil\n!cleanhush\n!infohush');
+  }*/
+
+  if (receivedMessage.content.startsWith('!takejsonfile')) {
+    makeJSON(receivedMessage);
   }
 
   if (receivedMessage.content.startsWith('!cleanhush')) {
+    receivedMessage.delete();
+    receivedMessage.channel.send('Spoilerler temizlendi');
     spoiler = [];
   }
 
@@ -75,4 +89,9 @@ function checkStatus(receivedMessage) {
     spoiler = [];
     return receivedMessage.channel.send('Spoiler listesi doldu!');
   }
+}
+
+function makeJSON(message) {
+  message.delete();
+  let jsonFile = JSON.stringify(spoiler);
 }
