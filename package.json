@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Discord spoiler bot",
   "main": "bot.js",
+  "engines": {
+    "node": "8.x",
+    "npm": "*"
+  },
   "dependencies": {
     "discord.js": "^11.4.2"
   },
