@@ -2,7 +2,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-//const env = require('./token');
 const regex = new RegExp('(!spoil)( )(100|[1-9][1-9]?)$');
 
 let spoiler = [];
