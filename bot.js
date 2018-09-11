@@ -21,16 +21,14 @@ client.on('message', receivedMessage => {
   }
 
   /*
-  comments
+  commands
     !cleanhush
     !spoiler
     !spoil #id
   */
 
-  if (receivedMessage.content.startsWith('!spoilerlist')) {
-    spoiler.forEach(spoiler => {
-      receivedMessage.channel.send(spoiler.spoiler, spoiler.author);
-    });
+  if (receivedMessage.content.startsWith('!listhush')) {
+    console.log(spoiler);
   }
 
   if (receivedMessage.content.startsWith('!cleanhush')) {
@@ -39,10 +37,7 @@ client.on('message', receivedMessage => {
     spoiler = [];
   }
 
-  if (
-    receivedMessage.content.startsWith('!spoiler') &&
-    !receivedMessage.content.startsWith('!spoilerlist')
-  ) {
+  if (receivedMessage.content.startsWith('!spoiler')) {
     let element = {
       spoiler: receivedMessage.content.slice(8),
       author: receivedMessage.author,
