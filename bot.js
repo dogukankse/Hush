@@ -1,6 +1,7 @@
 /* jshint esversion: 6 */
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const http = require('http');
 
 const regex = new RegExp('(!spoil)( )(100|[1-9][1-9]?)$');
 
@@ -79,3 +80,7 @@ function checkStatus(receivedMessage) {
     return receivedMessage.channel.send('Spoiler listesi doldu!');
   }
 }
+
+setInterval(() => {
+  http.get('http://hush-discord-bot.herokuapp.com/');
+}, 1200000); // every 20 minutes
