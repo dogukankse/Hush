@@ -39,7 +39,10 @@ client.on('message', receivedMessage => {
     spoiler = [];
   }
 
-  if (receivedMessage.content.startsWith('!spoiler')) {
+  if (
+    receivedMessage.content.startsWith('!spoiler') &&
+    !receivedMessage.content.startsWith('!spoilerlist')
+  ) {
     let element = {
       spoiler: receivedMessage.content.slice(8),
       author: receivedMessage.author,
