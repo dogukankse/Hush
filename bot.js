@@ -12,11 +12,6 @@ client.on('ready', () => {
   console.log('Connected as ' + client.user.tag + ' to');
   client.guilds.forEach(guild => {
     console.log('    ' + guild.name + ' - ' + guild.id);
-    guild.channels.forEach(channel => {
-      console.log(
-        '\t' + channel.name + ' - ' + channel.type + ' - ' + channel.id
-      );
-    });
   });
 });
 
@@ -27,18 +22,15 @@ client.on('message', receivedMessage => {
 
   /*
   comments
-    !takejsonfile
     !cleanhush
     !spoiler
     !spoil #id
   */
 
-  /*if (receivedMessage.content.startsWith('!infohush')) {
-    receivedMessage.channel.send('!spoiler\n!spoil\n!cleanhush\n!infohush');
-  }*/
-
-  if (receivedMessage.content.startsWith('!takejsonfile')) {
-    makeJSON(receivedMessage);
+  if (receivedMessage.content.startsWith('!spoilerlist')) {
+    spoiler.forEach(spoiler => {
+      receivedMessage.channel.send(spoiler.spoiler, spoiler.author);
+    });
   }
 
   if (receivedMessage.content.startsWith('!cleanhush')) {
@@ -59,7 +51,7 @@ client.on('message', receivedMessage => {
     checkStatus(receivedMessage);
     receivedMessage.channel.send(
       receivedMessage.author.username +
-        ' tarafından yeni spoiler, almak için "!spoil ' +
+        ' tarafından yeni bir spoiler, almak için "!spoil ' +
         spoiler.length +
         '" yazınız. '
     );
@@ -88,9 +80,4 @@ function checkStatus(receivedMessage) {
     spoiler = [];
     return receivedMessage.channel.send('Spoiler listesi doldu!');
   }
-}
-
-function makeJSON(message) {
-  message.delete();
-  let jsonFile = JSON.stringify(spoiler);
 }
