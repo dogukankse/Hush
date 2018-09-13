@@ -23,10 +23,16 @@ client.on('message', receivedMessage => {
 
   /*
   commands
-    !cleanhush
-    !spoiler
-    !spoil #id
+    !sourcehush   //github repo
+    !cleanhush    //cleans spoiler list
+    !spoiler      //saves the spoiler to the spoiler list
+    !spoil #id    //spoils the spoiler with certain id
+    !listhush     //prints spoiler list to console
   */
+
+  if (receivedMessage.content.startsWith('!sourcehush')) {
+    receivedMessage.channel.send('github.com/dogukankse/Hush');
+  }
 
   if (receivedMessage.content.startsWith('!listhush')) {
     console.log(spoiler);
@@ -77,7 +83,7 @@ function checkStatus(receivedMessage) {
   }
   if (spoiler.length == 100) {
     spoiler = [];
-    return receivedMessage.channel.send('Spoiler listesi doldu!');
+    return receivedMessage.channel.send('Spoiler listesi doldu ve temizlendi!');
   }
 }
 
