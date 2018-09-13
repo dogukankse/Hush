@@ -4,7 +4,7 @@
   "description": "Discord spoiler bot",
   "main": "bot.js",
   "engines": {
-    "node": "8.x",
+    "node": "10.x",
     "npm": "*"
   },
   "dependencies": {
