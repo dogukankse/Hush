@@ -66,11 +66,13 @@ client.on('message', receivedMessage => {
     let id = receivedMessage.content.split(' ');
     let username = receivedMessage.author.username;
     id = id[1] - 1;
-    spoiler[id].recived.push(username);
-    receivedMessage.author.send(spoiler[id].spoiler);
-    receivedMessage.channel.send(
-      username + ' spoiler alarak tüm heycanı bozdu :('
-    );
+    if (spoiler[id] != null) {
+      spoiler[id].recived.push(username);
+      receivedMessage.author.send(spoiler[id].spoiler);
+      receivedMessage.channel.send(
+        username + ' spoiler alarak tüm heycanı bozdu :('
+      );
+    }
   }
 });
 
