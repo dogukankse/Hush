@@ -70,7 +70,7 @@ client.on('message', receivedMessage => {
       spoiler[id].recived.push(username);
       receivedMessage.author.send(spoiler[id].spoiler);
       receivedMessage.channel.send(
-        username + ' spoiler alarak tüm heycanı bozdu :('
+        username + ' spoiler alarak tüm heycanı bozdu :/'
       );
     }
   }
