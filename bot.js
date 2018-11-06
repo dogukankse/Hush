@@ -72,6 +72,8 @@ client.on('message', receivedMessage => {
       receivedMessage.channel.send(
         username + ' spoiler alarak tüm heycanı bozdu :/'
       );
+    } else {
+      receivedMessage.channel.send('Bu seferlik spoiler alamayacaksın');
     }
   }
 });
